@@ -1,0 +1,10 @@
+{
+  "email": "sinnott74@hotmail.com",
+  "staging": false,
+  "domains": [
+    {
+      "domain": "danielsinnott.com",
+      "hosts": [".", "www", "blog", "todo", "auth"]
+    }
+  ]
+}
