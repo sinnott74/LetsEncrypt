@@ -5,35 +5,13 @@
 
 * When the staging / test runs, it will say that a cert for danielsinnott already exist and how to remove it.
 
-`bx app domain-cert-remove danielsinnott.com; bx app domain-cert-add danielsinnott.com -c cert.pem -k privkey.pem -i chain.pem; bx app domain-cert danielsinnott.com`
+- Unroute routes, e.g. `danielsinnott.com` and `www.danielsinnott.com`
+
+- Run the following to remove the cert, as you can't add a new one while it exists
+  `bx app domain-cert-remove danielsinnott.com;`
+
+- above needs to be done after a staging run aswell
 
 - After generating the certs & uploading to IBM Cloud automatically, you need to delete the routes created. e.g.:
   `cf routes`
   `cf delete-route danielsinnott.com --hostname blog --path /.well-known/acme-challenge/`
-
-Stopping app letsencrypt in org sinnott74@hotmail.com / space production as sinnott74@hotmail.com...
-OK
-Attempting certificate upload...
-Uploading certificate to domain 'danielsinnott.com'...
-FAILED
-Error: {code: 'internal_server_error', message: 'Cannot read property 'decoded' of undefined'}
-
-Making GET request to https://danielsinnott.com
-HTTPSConnectionPool(host='danielsinnott.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, u'[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (\_ssl.c:726)'),))
-Attempting certificate upload...
-Uploading certificate to domain 'danielsinnott.com'...
-FAILED
-Error: {code: 'internal_server_error', message: 'Cannot read property 'decoded' of undefined'}
-
-Making GET request to https://danielsinnott.com
-HTTPSConnectionPool(host='danielsinnott.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, u'[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (\_ssl.c:726)'),))
-Attempting certificate upload...
-Uploading certificate to domain 'danielsinnott.com'...
-FAILED
-Error: {code: 'internal_server_error', message: 'Cannot read property 'decoded' of undefined'}
-
-Making GET request to https://danielsinnott.com
-HTTPSConnectionPool(host='danielsinnott.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, u'[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (\_ssl.c:726)'),))
-Warning: Please note that your SSL certificate, its corresponding PRIVATE KEY, and its intermediate certificates have been downloaded to the current working directory. If you need to remove them, use `rm *.pem`
-Unable to upload certificates
-daniels-mbp:bluemix-letsencrypt-master Sinnott$
