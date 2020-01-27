@@ -5,6 +5,9 @@
 
 * When the staging / test runs, it will say that a cert for danielsinnott already exist and how to remove it.
 
+- `bx login`
+- `bx target --cf`
+
 - Unroute routes, e.g. `danielsinnott.com` and `www.danielsinnott.com`
 
 - Run the following to remove the cert, as you can't add a new one while it exists
@@ -13,5 +16,5 @@
 - above needs to be done after a staging run aswell
 
 - After generating the certs & uploading to IBM Cloud automatically, you need to delete the routes created. e.g.:
-  `cf routes`
-  `cf delete-route danielsinnott.com --hostname blog --path /.well-known/acme-challenge/`
+  `bx cf routes`
+  `bx cf delete-route danielsinnott.com -f --path /.well-known/acme-challenge/ --hostname blog`
